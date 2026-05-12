@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+Meroitic&display=swap');
+    <title>Starbucks Landing Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap');
 
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -15,18 +16,18 @@
 
         section {
             position: relative;
-            width: 1600px;
-            margin: 0 auto;
+            width: 100%;
             min-height: 100vh;
-            background-color: rgb(255, 200, 0);
             padding: 100px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: #fff;
+            overflow: hidden;
         }
 
         header {
-            position:absolute;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -34,16 +35,14 @@
             padding: 20px 100px;
             justify-content: space-between;
             align-items: center;
-        
+            z-index: 1000;
         }
 
-        header  .logo {
-            position: relative;
+        header .logo {
             max-width: 80px;
         }
         
         header ul {
-            position: relative;
             display: flex;
         }
 
@@ -53,7 +52,8 @@
 
         header ul li a {
             display: inline-block;
-            color: #000;
+            color: #333;
+            font-weight: 400;
             margin-left: 40px;
             text-decoration: none;
         }
@@ -64,15 +64,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 10;
         }
 
         .content .textBox {
             position: relative;
             max-width: 600px;
         }
+
         .content .textBox h2 {
             font-size: 4em;
             color: #333;
+            line-height: 1.4em;
             font-weight: 500;
         }
 
@@ -82,7 +85,11 @@
             font-weight: 900;
         }
 
-        .content .textBox a{
+        .content .textBox p {
+            color: #333;
+        }
+
+        .content .textBox a {
             display: inline-block;
             margin-top: 20px;
             padding: 8px 20px;
@@ -96,11 +103,9 @@
 
         .content .imgBox {
             width: 600px;
-            background-color: #fff;
             display: flex;
             justify-content: flex-end;
             padding-right: 50px;
-            margin-top: 50px;
         }
 
         .content .imgBox img {
@@ -113,42 +118,108 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
+            z-index: 100;
         }
 
-        
+        .thumb li {
+            list-style: none;
+            margin: 0 20px;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        .thumb li:hover {
+            transform: translateY(-15px);
+        }
+
+        .thumb li img {
+            max-width: 60px;
+        }
+
+        .sci {
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .sci li {
+            list-style: none;
+        }
+
+        .sci li a {
+            display: inline-block;
+            margin: 5px 0;
+            transform: scale(0.6);
+            filter: invert(1);
+        }
+
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #017143;
+            clip-path: circle(600px at right 800px);
+            transition: 0.5s ease; /* 색상 변경 시 부드러운 효과 */
+        }
     </style>
-   <body>
-     <section>
+</head>
+<body>
+    <section>
         <div class="circle"></div>
         <header>
-           <a href="#" class="logo"><img src="./imgs/logo.png" alt=""></a>
-           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">What's New</a></li>
-            <li><a href="#">Contact</a></li>
-           </ul>
+            <a href="#" class="logo"><img src="./imgs/logo.png" alt="Logo"></a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">What's New</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
         </header>
+
         <div class="content">
-            <div class ="textBox">
+            <div class="textBox">
                 <h2>It's not just Coffee <br><span>It's Starbucks</span></h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+                <p>맛있는 음료와 함께 스타벅스의 특별한 경험을 만나보세요. 단순한 커피 그 이상의 가치를 전달합니다.</p>
                 <a href="#">Learn More</a>
+            </div>
+
+            <div class="imgBox">
+                <img src="./imgs/img1.png" class="starbucks" alt="Main Drink">
+            </div>
         </div>
 
-        <div class="imgBox" alt="">
-            <img src="./imgs/img1.png" alt="Starbucks Coffee">
-        </div>
-        </div>
         <ul class="thumb">
-            <li><img src="./imgs/thumb1.png" alt=""></li>
-            <li><img src="./imgs/thumb2.png" alt=""></li>
-            <li><img src="./imgs/thumb3.png" alt=""></li>
+            <!-- 클릭 시 이미지 변경과 원 색상 변경 함수 호출 -->
+            <li><img src="./imgs/thumb1.png" onclick="imgSlider('./imgs/img1.png'); changeCircleColor('#017143')"></li>
+            <li><img src="./imgs/thumb2.png" onclick="imgSlider('./imgs/img2.png'); changeCircleColor('#eb7495')"></li>
+            <li><img src="./imgs/thumb3.png" onclick="imgSlider('./imgs/img3.png'); changeCircleColor('#d752b1')"></li>
         </ul>
+
         <ul class="sci">
-            <li><a href="#"><img src="./imgs/facebook.png" alt=""></a></li>
-            <li><a href="#"><img src="./imgs/twitter.png" alt=""></a></li>
-            <li><a href="#"><img src="./imgs/instagram.png" alt=""></a></li>
-     </section>
-   </body>
+            <li><a href="#"><img src="./imgs/facebook.png"></a></li>
+            <li><a href="#"><img src="./imgs/twitter.png"></a></li>
+            <li><a href="#"><img src="./imgs/instagram.png"></a></li>
+        </ul>
+    </section>
+
+    <script>
+        // 메인 이미지 변경 함수
+        function imgSlider(anything) {
+            document.querySelector('.starbucks').src = anything;
+        }
+
+        // 배경 원 색상 변경 함수
+        function changeCircleColor(color) {
+            const circle = document.querySelector('.circle');
+            circle.style.background = color;
+        }
+    </script>
+</body>
 </html>
