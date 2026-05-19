@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starbucks Galaxy | In Collaboration with SpaceX</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>STARBUCKS: ASTRO-BLEND</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="cursor-follower"></div>
     <div class="space-background"></div>
-
+    
     <header>
         <div class="container">
-            <h1 class="logo">
-                <a href="#"><img src="./images/logo.png" alt="Starbucks"></a>
-            </h1>
+            <h1 class="logo"><a href="#"><img src="./images/logo.png" alt="Starbucks"></a></h1>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#">MISSION</a></li>
@@ -26,30 +25,46 @@
         </div>
     </header>
 
-    <main class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="badge">IN COLLABORATION WITH SPACEX</span>
-                <h2 class="main-title">STARDUST<br>BREWING</h2>
-                <p class="description">
-                    일론 머스크의 화성 이주 계획과 함께하는 스타벅스의 새로운 여정.<br>
-                    은하계 어디서나 완벽한 한 잔의 휴식을 경험하세요.
-                </p>
-                <div class="cta-area">
+    <main>
+        <section class="hero">
+            <div class="container flex-box">
+                <div class="hero-content">
+                    <span class="badge">BEYOND THE ATMOSPHERE</span>
+                    <h2 class="main-title">STARBUCKS<br>ASTRO-BLEND</h2> <p class="description">
+                        은하계의 성운을 담은 단 한 잔의 휴식.<br>
+                        스타벅스 아스트로-블렌드와 함께 화성으로의 여정을 시작하세요.
+                    </p>
                     <a href="#" class="btn-primary">LAUNCH ORDER</a>
                 </div>
+
+                <div class="galaxy-display">
+                    <div class="planet-unit earth-pos">
+                        <div class="interaction-area">
+                            <img src="./images/cup.png" alt="Earth Drink" class="drink-popup">
+                            <img src="./images/planet_earth.png" alt="Earth" class="planet-img">
+                        </div>
+                    </div>
+                    <div class="planet-unit mars-pos">
+                        <div class="interaction-area">
+                            <img src="./images/drink_red.png" alt="Mars Drink" class="drink-popup">
+                            <img src="./images/planet_mars.png" alt="Mars" class="planet-img">
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="hero-visual">
-                <img src="./images/cup.png" alt="Space Coffee" class="floating-cup">
-            </div>
-        </div>
+        </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Starbucks Galaxy Project. Designed by Kim Yeo-won.</p>
-        </div>
+        <p>&copy; 2026 Starbucks Galaxy Project. Designed by Kim Yeo-won.</p>
     </footer>
+
+    <script>
+        const cursor = document.querySelector('.cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
 </body>
 </html>
