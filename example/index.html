@@ -2,9 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STARBUCKS: ASTRO-BLEND</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
+    <title>STARBUCKS: THE COSMIC ORDER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,55 +11,79 @@
     <div class="space-background"></div>
     
     <header>
-        <div class="container">
-            <h1 class="logo"><a href="#"><img src="./images/logo.png" alt="Starbucks"></a></h1>
+        <div class="container flex-header">
+            <h1 class="logo"><img src="./images/logo.png" alt="Starbucks"></h1>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#">MISSION</a></li>
-                    <li><a href="#">PLANETS</a></li>
-                    <li><a href="#">STARLINK</a></li>
-                    <li><a href="#">RESERVE</a></li>
+                    <li><a href="#">MISSION</a></li><li><a href="#">PLANETS</a></li><li><a href="#">STARLINK</a></li><li><a href="#">RESERVE</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container flex-box">
-                <div class="hero-content">
-                    <span class="badge">BEYOND THE ATMOSPHERE</span>
-                    <h2 class="main-title">STARBUCKS<br>ASTRO-BLEND</h2> <p class="description">
-                        은하계의 성운을 담은 단 한 잔의 휴식.<br>
-                        스타벅스 아스트로-블렌드와 함께 화성으로의 여정을 시작하세요.
-                    </p>
-                    <a href="#" class="btn-primary">LAUNCH ORDER</a>
-                </div>
+    <main id="main-canvas">
+        <div class="hero-text" id="hero-text">
+            <span class="badge">SCROLL TO INVOKE GRAVITY</span>
+            <h2 class="main-title">STARBUCKS<br>ASTRO-BLEND</h2> <p class="description">은하계의 완벽한 질서. 이제 목성의 위엄을 직접 확인하세요.</p>
+        </div>
 
-                <div class="galaxy-display">
-                    <div class="planet-unit earth-pos">
-                        <div class="interaction-area">
-                            <img src="./images/cup.png" alt="Earth Drink" class="drink-popup">
-                            <img src="./images/planet_earth.png" alt="Earth" class="planet-img">
-                        </div>
-                    </div>
-                    <div class="planet-unit mars-pos">
-                        <div class="interaction-area">
-                            <img src="./images/drink_red.png" alt="Mars Drink" class="drink-popup">
-                            <img src="./images/planet_mars.png" alt="Mars" class="planet-img">
-                        </div>
-                    </div>
+        <div class="solar-system" id="solar-system">
+            <div class="sun-event-group">
+                <img src="./images/sun_drink.png" alt="Sun Drink" class="sun-drink-popup">
+                <div class="center-sun">
+                    <img src="./images/sun.png" alt="Sun" class="sun-img">
+                    <div class="sun-glow"></div>
                 </div>
             </div>
-        </section>
+
+            <div class="orbit-container">
+                <div class="static-orbit" style="--orbit: 160px;"></div>
+                <div class="static-orbit" style="--orbit: 240px;"></div>
+                <div class="static-orbit" style="--orbit: 340px;"></div>
+                <div class="static-orbit" style="--orbit: 450px;"></div>
+                <div class="static-orbit" style="--orbit: 620px;"></div>
+                <div class="static-orbit" style="--orbit: 800px;"></div>
+            </div>
+
+            <div class="planet-node" style="--scatter-x: -30vw; --scatter-y: -25vh; --orbit: 160px; --p-size: 35px; --speed: 8s;">
+                <div class="planet-unit"><img src="./images/drink_mercury.png" class="drink-popup"><img src="./images/planet_mercury.png" class="planet-img"></div>
+            </div>
+            <div class="planet-node" style="--scatter-x: 10vw; --scatter-y: -30vh; --orbit: 240px; --p-size: 60px; --speed: 13s;">
+                <div class="planet-unit"><img src="./images/drink_venus.png" class="drink-popup"><img src="./images/planet_venus.png" class="planet-img"></div>
+            </div>
+            <div class="planet-node" style="--scatter-x: -10vw; --scatter-y: 20vh; --orbit: 340px; --p-size: 85px; --speed: 20s;">
+                <div class="planet-unit">
+                    <img src="./images/cup.png" class="drink-popup">
+                    <div class="earth-system">
+                        <img src="./images/planet_earth.png" class="planet-img">
+                        <div class="moon-wrap"><img src="./images/planet_moon.png" class="moon"></div> </div>
+                </div>
+            </div>
+            <div class="planet-node" style="--scatter-x: 20vw; --scatter-y: 25vh; --orbit: 450px; --p-size: 55px; --speed: 28s;">
+                <div class="planet-unit"><img src="./images/drink_red.png" class="drink-popup"><img src="./images/planet_mars.png" class="planet-img"></div>
+            </div>
+            <div class="planet-node" style="--scatter-x: -35vw; --scatter-y: 10vh; --orbit: 620px; --p-size: 240px; --speed: 45s;"> <div class="planet-unit"><img src="./images/drink_brown.png" class="drink-popup"><img src="./images/planet_jupiter.png" class="planet-img"></div>
+            </div>
+            <div class="planet-node" style="--scatter-x: 30vw; --scatter-y: -15vh; --orbit: 800px; --p-size: 150px; --speed: 65s;"> <div class="planet-unit"><img src="./images/drink_yellow.png" class="drink-popup"><img src="./images/planet_saturn.png" class="planet-img" style="width:170%;"></div>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Starbucks Galaxy Project. Designed by Kim Yeo-won.</p>
-    </footer>
-
     <script>
+        const solarSystem = document.getElementById('solar-system');
+        const heroText = document.getElementById('hero-text');
         const cursor = document.querySelector('.cursor-follower');
+
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0) {
+                solarSystem.classList.add('active');
+                heroText.classList.add('active');
+            } else {
+                solarSystem.classList.remove('active');
+                heroText.classList.remove('active');
+            }
+        });
+
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
