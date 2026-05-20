@@ -117,7 +117,7 @@ header {
 }
 
 .floating-cup {
-    width: 450px; /* 1920px 화면에서 적절한 크기 */
+    width: 300px; /* 1920px 화면에서 적절한 크기 */
     animation: spaceFloat 6s ease-in-out infinite;
     filter: drop-shadow(0 0 50px rgba(0, 112, 74, 0.3));
 }
