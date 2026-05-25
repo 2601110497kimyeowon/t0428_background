@@ -2,11 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>STARBUCKS: THE COSMIC ORDER</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
+    <title>STARBUCKS x SpaceX: COSMIC EDITION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="step-1">
     <div class="cursor-follower"></div>
     <div class="space-background"></div>
     
@@ -22,71 +22,54 @@
     </header>
 
     <main id="main-canvas">
-        <div class="hero-text" id="hero-text">
-            <span class="badge">SCROLL TO INVOKE GRAVITY</span>
-            <h2 class="main-title">STARBUCKS<br>ASTRO-BLEND</h2> <p class="description">은하계의 완벽한 질서. 이제 목성의 위엄을 직접 확인하세요.</p>
+        <div class="launch-zone">
+            <div class="hero-text-wrap">
+                <span class="badge">STARBUCKS x SpaceX</span>
+                <h2 class="main-title">
+                    WELCOME TO THE GALAXY<br>
+                    BEYOND THE <span class="sb-green">STARBUCKS</span>
+                </h2>
+                <p class="guide-msg">TAP THE ROCKET TO START JOURNEY</p>
+            </div>
+            <div class="earth-rocket-group" id="rocket-trigger">
+                <div class="rocket-box"><img src="./images/spaceX rocket.png" alt="Rocket" class="spacex-rocket"></div>
+                <img src="./images/planet_earth.png" alt="Earth" class="main-earth">
+            </div>
         </div>
 
-        <div class="solar-system" id="solar-system">
-            <div class="sun-event-group">
-                <img src="./images/sun_drink.png" alt="Sun Drink" class="sun-drink-popup">
-                <div class="center-sun">
-                    <img src="./images/sun.png" alt="Sun" class="sun-img">
-                    <div class="sun-glow"></div>
-                </div>
-            </div>
+        <div class="special-ui">
+            <div class="edition-label">SPECIAL EDITION</div>
+            <h3 class="edition-title">GALAXY DRINK ARCHIVE</h3>
+            <span class="line"></span>
+        </div>
 
-            <div class="orbit-container">
-                <div class="static-orbit" style="--orbit: 160px;"></div>
-                <div class="static-orbit" style="--orbit: 240px;"></div>
-                <div class="static-orbit" style="--orbit: 340px;"></div>
-                <div class="static-orbit" style="--orbit: 450px;"></div>
-                <div class="static-orbit" style="--orbit: 620px;"></div>
-                <div class="static-orbit" style="--orbit: 800px;"></div>
+        <div class="galaxy-field" id="galaxy-field">
+            <div class="planet-node" style="--o-dist: 0vw; --o-speed: 0s; --p-size: 20vh;">
+                <div class="planet-unit"><img src="./images/drink_sun.png" class="drink-popup"><div class="drink-name">SOLAR ENERGY MIST</div><img src="./images/sun.png" class="planet-img"></div>
             </div>
-
-            <div class="planet-node" style="--scatter-x: -30vw; --scatter-y: -25vh; --orbit: 160px; --p-size: 35px; --speed: 8s;">
-                <div class="planet-unit"><img src="./images/drink_mercury.png" class="drink-popup"><img src="./images/planet_mercury.png" class="planet-img"></div>
-            </div>
-            <div class="planet-node" style="--scatter-x: 10vw; --scatter-y: -30vh; --orbit: 240px; --p-size: 60px; --speed: 13s;">
-                <div class="planet-unit"><img src="./images/drink_venus.png" class="drink-popup"><img src="./images/planet_venus.png" class="planet-img"></div>
-            </div>
-            <div class="planet-node" style="--scatter-x: -10vw; --scatter-y: 20vh; --orbit: 340px; --p-size: 85px; --speed: 20s;">
-                <div class="planet-unit">
-                    <img src="./images/cup.png" class="drink-popup">
-                    <div class="earth-system">
-                        <img src="./images/planet_earth.png" class="planet-img">
-                        <div class="moon-wrap"><img src="./images/planet_moon.png" class="moon"></div> </div>
-                </div>
-            </div>
-            <div class="planet-node" style="--scatter-x: 20vw; --scatter-y: 25vh; --orbit: 450px; --p-size: 55px; --speed: 28s;">
-                <div class="planet-unit"><img src="./images/drink_red.png" class="drink-popup"><img src="./images/planet_mars.png" class="planet-img"></div>
-            </div>
-            <div class="planet-node" style="--scatter-x: -35vw; --scatter-y: 10vh; --orbit: 620px; --p-size: 240px; --speed: 45s;"> <div class="planet-unit"><img src="./images/drink_brown.png" class="drink-popup"><img src="./images/planet_jupiter.png" class="planet-img"></div>
-            </div>
-            <div class="planet-node" style="--scatter-x: 30vw; --scatter-y: -15vh; --orbit: 800px; --p-size: 150px; --speed: 65s;"> <div class="planet-unit"><img src="./images/drink_yellow.png" class="drink-popup"><img src="./images/planet_saturn.png" class="planet-img" style="width:170%;"></div>
-            </div>
+            <div class="planet-node" style="--o-dist: 12vw; --o-speed: 6s; --p-size: 4vh;"><div class="planet-unit"><img src="./images/drink_mercury.png" class="drink-popup"><div class="drink-name">MERCURY ESPRESSO</div><img src="./images/planet_mercury.png" class="planet-img"></div></div>
+            <div class="planet-node" style="--o-dist: 17vw; --o-speed: 10s; --p-size: 6vh;"><div class="planet-unit"><img src="./images/금성음료.png" class="drink-popup"><div class="drink-name">VENUS VELVET LATTE</div><img src="./images/planet_venus.png" class="planet-img"></div></div>
+            <div class="planet-node" style="--o-dist: 23vw; --o-speed: 14s; --p-size: 7vh;"><div class="planet-unit"><img src="./images/drink_earth.png" class="drink-popup"><div class="drink-name">TERRA COLD BREW</div><img src="./images/planet_earth.png" class="planet-img"></div></div>
+            <div class="planet-node" style="--o-dist: 29vw; --o-speed: 18s; --p-size: 5.5vh;"><div class="planet-unit"><img src="./images/drink_mars.png" class="drink-popup"><div class="drink-name">MARS BERRY CRUSH</div><img src="./images/planet_mars.png" class="planet-img"></div></div>
+            <div class="planet-node" style="--o-dist: 36vw; --o-speed: 25s; --p-size: 12vh;"><div class="planet-unit"><img src="./images/drink_jupiter.png" class="drink-popup"><div class="drink-name">JUPITER GOLDEN CREAM</div><img src="./images/planet_jupiter.png" class="planet-img"></div></div>
+            <div class="planet-node" style="--o-dist: 43vw; --o-speed: 32s; --p-size: 10vh;"><div class="planet-unit"><img src="./images/토성음료.png" class="drink-popup"><div class="drink-name">SATURN RING TEA</div><img src="./images/planet_saturn.png" class="planet-img"></div></div>
+            <div class="planet-node" style="--o-dist: 49vw; --o-speed: 40s; --p-size: 8vh;"><div class="planet-unit"><img src="./images/drink_urano.png" class="drink-popup"><div class="drink-name">URANUS MINT CHILLER</div><img src="./images/planet_urano.png" class="planet-img"></div></div>
+            <div class="planet-node" style="--o-dist: 55vw; --o-speed: 50s; --p-size: 8vh;"><div class="planet-unit"><img src="./images/drink_neptune.png" class="drink-popup"><div class="drink-name">NEPTUNE DEEP BLUE</div><img src="./images/planet_neptune.png" class="planet-img"></div></div>
         </div>
     </main>
 
     <script>
-        const solarSystem = document.getElementById('solar-system');
-        const heroText = document.getElementById('hero-text');
-        const cursor = document.querySelector('.cursor-follower');
-
-        window.addEventListener('wheel', (e) => {
-            if (e.deltaY > 0) {
-                solarSystem.classList.add('active');
-                heroText.classList.add('active');
-            } else {
-                solarSystem.classList.remove('active');
-                heroText.classList.remove('active');
+        const body = document.body;
+        const rocket = document.getElementById('rocket-trigger');
+        rocket.addEventListener('click', () => {
+            if(body.classList.contains('step-1')) {
+                rocket.classList.add('launch');
+                setTimeout(() => { body.classList.remove('step-1'); body.classList.add('step-2'); }, 1200); 
             }
         });
-
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+            const cursor = document.querySelector('.cursor-follower');
+            cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
         });
     </script>
 </body>
