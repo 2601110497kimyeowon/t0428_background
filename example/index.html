@@ -45,7 +45,7 @@
 
         <div class="galaxy-field" id="galaxy-field">
             <div class="planet-node" style="--o-dist: 0vw; --o-speed: 0s; --p-size: 20vh;">
-                <div class="planet-unit"><img src="./images/drink_sun.png" class="drink-popup"><div class="drink-name">SOLAR ENERGY MIST</div><img src="./images/sun.png" class="planet-img"></div>
+                <div class="planet-unit"><img src="./images/drink_sun.png" class="drink-popup"><div class="drink-name">Solar Flare Refresh</div><img src="./images/sun.png" class="planet-img"></div>
             </div>
             <div class="planet-node" style="--o-dist: 12vw; --o-speed: 6s; --p-size: 4vh;"><div class="planet-unit"><img src="./images/drink_mercury.png" class="drink-popup"><div class="drink-name">MERCURY ESPRESSO</div><img src="./images/planet_mercury.png" class="planet-img"></div></div>
             <div class="planet-node" style="--o-dist: 17vw; --o-speed: 10s; --p-size: 6vh;"><div class="planet-unit"><img src="./images/금성음료.png" class="drink-popup"><div class="drink-name">VENUS VELVET LATTE</div><img src="./images/planet_venus.png" class="planet-img"></div></div>
@@ -71,6 +71,11 @@
             const cursor = document.querySelector('.cursor-follower');
             cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
         });
+    </script>
+    <script>
+        
+        rocket.addEventListener('click', () => { rocket.classList.add('launch'); setTimeout(() => { body.classList.add('step-2'); }, 1200); });
+        window.addEventListener('wheel', (e) => { if (e.deltaY > 0 && body.classList.contains('step-2')) body.classList.add('step-3'); });
     </script>
 </body>
 </html>
