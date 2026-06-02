@@ -136,9 +136,6 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 
 .spacex-rocket { width: 100%; height: auto; }
 
-.launch-zone.launch { transform: translateY(120vh); opacity: 0; }
-
-.launch .spacex-rocket { animation: rocketUp 2s forwards; }
 
 
 

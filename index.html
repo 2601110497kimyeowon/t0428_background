@@ -2,6 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
     <title>STARBUCKS x SpaceX: COSMIC EDITION</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -59,23 +61,57 @@
     </main>
 
     <script>
-        const body = document.body;
-        const rocket = document.getElementById('rocket-trigger');
-        rocket.addEventListener('click', () => {
-            if(body.classList.contains('step-1')) {
-                rocket.classList.add('launch');
-                setTimeout(() => { body.classList.remove('step-1'); body.classList.add('step-2'); }, 1200); 
-            }
-        });
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor-follower');
-            cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-        });
-    </script>
-    <script>
-        
-        rocket.addEventListener('click', () => { rocket.classList.add('launch'); setTimeout(() => { body.classList.add('step-2'); }, 1200); });
-        window.addEventListener('wheel', (e) => { if (e.deltaY > 0 && body.classList.contains('step-2')) body.classList.add('step-3'); });
-    </script>
+    const body = document.body;
+    const rocket = document.getElementById('rocket-trigger');
+    
+    // 로켓 클릭 시 GSAP 타임라인 애니메이션 실행
+    rocket.addEventListener('click', () => {
+        if(body.classList.contains('step-1')) {
+            const tl = gsap.timeline();
+            
+            // 1. 로켓이 먼저 위로 발사됨
+            tl.to('.spacex-rocket', {
+                y: "-150vh", 
+                duration: 1.2,
+                ease: "power2.in"
+            }, 0) // 0: 타임라인 시작과 동시에 실행
+            
+            // 2. 타이틀과 지구가 뒤따라 위로 올라가며 페이드아웃
+            .to(['.hero-text-wrap', '.main-earth'], {
+                y: "-100vh",
+                opacity: 0,
+                duration: 1.5,
+                ease: "power3.inOut",
+                stagger: 0.1 // 텍스트가 먼저, 지구가 아주 살짝 나중에 올라가는 디테일
+            }, 0.5) // 로켓 출발 0.5초 뒤에 실행
+            
+            // 3. 화면이 다 비워지면 클래스 교체 (화면 전환)
+            .add(() => {
+                body.classList.remove('step-1');
+                body.classList.add('step-2');
+            })
+            
+            // 4. 태양계(Step 2) 요소들이 부드럽게 페이드인
+            .fromTo(['.special-ui', '.galaxy-field'], 
+                { opacity: 0 }, 
+                { opacity: 1, duration: 1.5, ease: "power2.out" }
+            );
+        }
+    });
+
+    // 마우스 커서 팔로워 효과
+    document.addEventListener('mousemove', (e) => {
+        const cursor = document.querySelector('.cursor-follower');
+        cursor.style.left = e.clientX + 'px'; 
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // 마우스 휠 스크롤 시 Step 3로 전환
+    window.addEventListener('wheel', (e) => { 
+        if (e.deltaY > 0 && body.classList.contains('step-2')) {
+            body.classList.add('step-3'); 
+        }
+    });
+</script>
 </body>
 </html>
