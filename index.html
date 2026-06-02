@@ -150,8 +150,9 @@
     const rocket = document.getElementById('rocket-trigger');
     let currentStep = 1;      
     let isAnimating = true;   
-    let step3Progress = 0; 
+    let step3Progress = 0; // Step 3에서 음료가 몇 개 나왔는지 체크 (0~8)
 
+    // 1. [최초 진입]
     window.onload = () => {
         const introTl = gsap.timeline({ onComplete: () => isAnimating = false });
         introTl.from('.badge', { y: 30, opacity: 0, duration: 0.8, ease: "power2.out", delay: 0.2 })
@@ -160,6 +161,7 @@
                .from('.earth-rocket-group', { y: 150, opacity: 0, duration: 1.5, ease: "power3.out" }, "-=0.4");
     };
 
+    // 2. [로켓 클릭] Step 1 -> Step 2
     rocket.addEventListener('click', () => {
         if(currentStep !== 1 || isAnimating) return;
         isAnimating = true;
@@ -176,29 +178,30 @@
           .add(() => { currentStep = 2; isAnimating = false; });
     });
 
+    // 3. [스크롤 로직] 
     window.addEventListener('wheel', (e) => {
         if (isAnimating || currentStep === 1) return;
 
         if (e.deltaY > 0) {
-            // 아래로 스크롤
+            // ▼ 아래로 스크롤
             if (currentStep === 2) {
                 goToStep3_Init();
             } else if (currentStep === 3) {
-                if (step3Progress < 8) revealNextDrink(); // 하나씩 반시계로 팝업
-                else goToStep4(); // 다 나오면 일렬로
+                if (step3Progress < 8) revealNextDrink(); // 하나씩 팝업
+                else goToStep4(); // 8개 다 나오면 일렬 정렬로
             }
         } else if (e.deltaY < 0) {
-            // 위로 스크롤 (롤백)
+            // ▲ 위로 스크롤 (자연스러운 롤백)
             if (currentStep === 4) {
                 goToStep3_From4();
             } else if (currentStep === 3) {
-                if (step3Progress > 0) hideCurrentDrink(); 
+                if (step3Progress > 0) hideCurrentDrink(); // 하나씩 다시 숨김
                 else goToStep2_Reverse();
             }
         }
     });
 
-    // [Step 2 -> Step 3] 행성들만 태양 뒤로 숨기
+    // [Step 2 -> Step 3 초기화] 태양 뒤로 숨기
     function goToStep3_Init() {
         isAnimating = true;
         const tl = gsap.timeline({ onComplete: () => { currentStep = 3; step3Progress = 0; isAnimating = false; }});
@@ -206,48 +209,49 @@
         tl.to('.scroll-indicator', { opacity: 0, duration: 0.5 }, 0);
         tl.to('.orbit-line', { opacity: 0, duration: 0.5 }, 0);
 
-        // 태양(:first-child) 제외하고 나머지 행성들만 중앙으로 이동
+        // 1) 행성들이 태양(0vw)을 향해 모이면서 z-index 100인 태양 뒤로 숨음
         tl.to('.planet-node:not(:first-child)', { 
             '--o-dist': '0vw', duration: 1.2, ease: "power2.in" 
         }, 0);
         
-        // 이동하면서 행성 이미지만 투명하게 (태양은 그대로 유지!)
+        // 2) 태양 뒤에 도착할 즈음 행성 이미지를 투명하게 (나중에 음료만 튀어나오게)
         tl.to('.planet-node:not(:first-child) .planet-img', { 
             scale: 0, opacity: 0, duration: 0.4 
         }, 0.8);
 
+        // 3) 원형 방향 세팅
         tl.add(() => {
             body.classList.remove('step-2');
             body.classList.add('step-3');
-            // 만약을 위해 팝업, 이름, 설명글 초기화 (숨김 상태)
+            // 음료 팝업들 초기 숨김 처리
             gsap.set('.planet-node:not(:first-child) .drink-popup, .planet-node:not(:first-child) .drink-name, .planet-node:not(:first-child) .drink-desc', { opacity: 0, y: 20, scale: 0.5 });
         });
     }
 
-    // [Step 3] 스크롤 시 반시계 방향으로 음료/이름만 하나씩 등장 (설명글 제외)
+    // [Step 3] 스크롤 할 때마다 반시계 방향으로 음료 1개씩 튀어나오기
     function revealNextDrink() {
         isAnimating = true;
         step3Progress++;
+        // nth-child는 1부터 시작하고, 1번은 태양이므로 +1 해줌
         const targetNode = document.querySelector(`.planet-node:nth-child(${step3Progress + 1})`); 
         
         const tl = gsap.timeline({ onComplete: () => isAnimating = false });
         tl.to(targetNode, { '--o-dist': '26vw', duration: 0.8, ease: "back.out(1.2)" }, 0);
         tl.to(targetNode.querySelectorAll('.drink-popup'), { opacity: 1, y: "-2vh", scale: 1.1, duration: 0.6, ease: "back.out(1.5)" }, 0.1);
-        // ★ 설명글(.drink-desc)은 애니메이션에서 제외하여 숨김 유지
-        tl.to(targetNode.querySelectorAll('.drink-name'), { opacity: 1, y: "-2vh", scale: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+        tl.to(targetNode.querySelectorAll('.drink-name, .drink-desc'), { opacity: 1, y: "-2vh", scale: 1, duration: 0.6, ease: "power2.out" }, 0.2);
     }
 
-    // [Step 3 롤백]
+    // [Step 3 롤백] 스크롤 올리면 하나씩 다시 들어가기
     function hideCurrentDrink() {
         isAnimating = true;
         const targetNode = document.querySelector(`.planet-node:nth-child(${step3Progress + 1})`);
         
         const tl = gsap.timeline({ onComplete: () => { step3Progress--; isAnimating = false; }});
-        tl.to(targetNode.querySelectorAll('.drink-popup, .drink-name'), { opacity: 0, y: 20, scale: 0.5, duration: 0.4 }, 0);
+        tl.to(targetNode.querySelectorAll('.drink-popup, .drink-name, .drink-desc'), { opacity: 0, y: 20, scale: 0.5, duration: 0.4 }, 0);
         tl.to(targetNode, { '--o-dist': '0vw', duration: 0.6, ease: "power2.in" }, 0.2);
     }
 
-    // [Step 3 -> Step 4] 일렬 배치 및 호버 기능 활성화
+    // [Step 3 -> Step 4] 8개 다 나오고 스크롤 시 일렬 배치
     function goToStep4() {
         isAnimating = true;
         const tl = gsap.timeline({ onComplete: () => { currentStep = 4; isAnimating = false; }});
@@ -256,9 +260,10 @@
         tl.add(() => {
             body.classList.remove('step-3');
             body.classList.add('step-4'); 
-            
-            // ★ 중요: JS가 강제로 넣은 스타일을 완벽히 지워야 CSS 호버 시 설명글이 나타남!
-            gsap.set('.planet-node, .planet-img, .planet-unit, .drink-popup, .drink-name, .drink-desc', { clearProps: "all" });
+            // ★ 핵심: GSAP이 넣은 인라인 스타일을 모두 지워야 Hover(마우스 오버) CSS가 정상 작동함
+            gsap.set('.planet-node', { clearProps: "--o-dist, transform" });
+            gsap.set('.planet-img', { clearProps: "opacity, scale" });
+            gsap.set('.drink-popup, .drink-name, .drink-desc', { clearProps: "opacity, y, scale" });
         });
         tl.to('.galaxy-field', { opacity: 1, duration: 0.5 });
         tl.fromTo('.step-4 .planet-node',
@@ -275,13 +280,11 @@
         tl.add(() => {
             body.classList.remove('step-4');
             body.classList.add('step-3');
-            
-            // 다시 Step 3의 8개 열린 상태로 스타일 복구
+            // 지웠던 스타일들을 8개 튀어나온 상태로 강제 복구
             gsap.set('.planet-node:not(:first-child)', { '--o-dist': '26vw' });
             gsap.set('.planet-node:not(:first-child) .planet-img', { opacity: 0, scale: 0 });
             gsap.set('.planet-node:not(:first-child) .drink-popup', { opacity: 1, y: "-2vh", scale: 1.1 });
-            gsap.set('.planet-node:not(:first-child) .drink-name', { opacity: 1, y: "-2vh", scale: 1 });
-            gsap.set('.planet-node:not(:first-child) .drink-desc', { opacity: 0, y: 20, scale: 0.5 }); // 설명글 숨김
+            gsap.set('.planet-node:not(:first-child) .drink-name, .planet-node:not(:first-child) .drink-desc', { opacity: 1, y: "-2vh", scale: 1 });
         });
         tl.to('.galaxy-field', { opacity: 1, duration: 0.5 });
     }
@@ -295,7 +298,7 @@
             body.classList.remove('step-3');
             body.classList.add('step-2');
         });
-        // 행성 이미지 원상복구
+        // 행성 이미지 다시 보이게
         tl.to('.planet-node:not(:first-child) .planet-img', { scale: 1, opacity: 1, duration: 0.5 }, 0);
         // 원래 궤도로 복구
         document.querySelectorAll('.planet-node').forEach(node => {
@@ -307,6 +310,7 @@
         tl.to('.scroll-indicator', { opacity: 1, duration: 0.5 }, 1.5);
     }
 
+    // 마우스 커서 팔로워 효과
     document.addEventListener('mousemove', (e) => {
         const cursor = document.querySelector('.cursor-follower');
         cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';

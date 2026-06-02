@@ -50,6 +50,7 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 
 /* 2. STEP 1: Launch Zone */
 
+/* --- 화면 쏠림 방지 및 중앙 정렬 고정 --- */
 .launch-zone {
     position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -138,33 +139,28 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 .step-2 .launch-zone { display: none; }
 /* --- STEP 3: 원형 방사형 배치 (12시부터 반시계방향) --- */
 .step-3 .planet-node { animation: none !important; }
+.step-3 .planet-node:nth-child(2) { transform: rotate(-90deg); }   /* 12시 수성 */
+.step-3 .planet-node:nth-child(3) { transform: rotate(-135deg); }  /* 10시 반 금성 */
+.step-3 .planet-node:nth-child(4) { transform: rotate(-180deg); }  /* 9시 지구 */
+.step-3 .planet-node:nth-child(5) { transform: rotate(-225deg); }  /* 7시 반 화성 */
+.step-3 .planet-node:nth-child(6) { transform: rotate(-270deg); }  /* 6시 목성 */
+.step-3 .planet-node:nth-child(7) { transform: rotate(-315deg); }  /* 4시 반 토성 */
+.step-3 .planet-node:nth-child(8) { transform: rotate(0deg); }     /* 3시 천왕성 */
+.step-3 .planet-node:nth-child(9) { transform: rotate(-45deg); }   /* 1시 반 해왕성 */
 
-/* 태양 (정중앙 고정) */
-.step-3 .planet-node:nth-child(1) { transform: translate(0, 0) !important; }
-/* 수성 (12시) */
-.step-3 .planet-node:nth-child(2) { transform: rotate(-90deg) translateX(var(--o-dist)) rotate(90deg) !important; }
-/* 금성 (10시 반) */
-.step-3 .planet-node:nth-child(3) { transform: rotate(-135deg) translateX(var(--o-dist)) rotate(135deg) !important; }
-/* 지구 (9시) */
-.step-3 .planet-node:nth-child(4) { transform: rotate(-180deg) translateX(var(--o-dist)) rotate(180deg) !important; }
-/* 화성 (7시 반) */
-.step-3 .planet-node:nth-child(5) { transform: rotate(-225deg) translateX(var(--o-dist)) rotate(225deg) !important; }
-/* 목성 (6시) */
-.step-3 .planet-node:nth-child(6) { transform: rotate(-270deg) translateX(var(--o-dist)) rotate(270deg) !important; }
-/* 토성 (4시 반) */
-.step-3 .planet-node:nth-child(7) { transform: rotate(-315deg) translateX(var(--o-dist)) rotate(315deg) !important; }
-/* 천왕성 (3시) */
-.step-3 .planet-node:nth-child(8) { transform: rotate(0deg) translateX(var(--o-dist)) rotate(0deg) !important; }
-/* 해왕성 (1시 반) */
-.step-3 .planet-node:nth-child(9) { transform: rotate(-45deg) translateX(var(--o-dist)) rotate(45deg) !important; }
+/* 이미지 뒤집힘 방지 역회전 */
+.step-3 .planet-node:nth-child(2) .planet-unit { transform: rotate(90deg); }
+.step-3 .planet-node:nth-child(3) .planet-unit { transform: rotate(135deg); }
+.step-3 .planet-node:nth-child(4) .planet-unit { transform: rotate(180deg); }
+.step-3 .planet-node:nth-child(5) .planet-unit { transform: rotate(225deg); }
+.step-3 .planet-node:nth-child(6) .planet-unit { transform: rotate(270deg); }
+.step-3 .planet-node:nth-child(7) .planet-unit { transform: rotate(315deg); }
+.step-3 .planet-node:nth-child(8) .planet-unit { transform: rotate(0deg); }
+.step-3 .planet-node:nth-child(9) .planet-unit { transform: rotate(45deg); }
 
-/* Step 3 에서는 내부 유닛 역회전 방지 (위에서 깔끔하게 계산됨) */
-.step-3 .planet-unit { transform: none !important; }
-.step-3 .planet-img { filter: brightness(0.3); transform: scale(0.9); }
-/* 태양은 어두워지지 않고 돋보이게 */
-.step-3 .planet-node:first-child .planet-img { filter: brightness(1) contrast(1.1); transform: scale(1.3); transition: 1s; }
-
-/* --- STEP 4: 일렬 배치 --- */
+/* Step 3 태양(중심) 디자인 강화 */
+.step-3 .planet-node:first-child .planet-img { filter: brightness(0.6) contrast(1.2); transform: scale(1.3); transition: 1s; }
+* --- STEP 4: 일렬 배치 --- */
 .step-4 .galaxy-field {
     display: flex; flex-direction: row; justify-content: center; align-items: center;
     gap: 3.5vw; opacity: 1; pointer-events: auto; position: absolute; top: 0; left: 0;
@@ -195,79 +191,48 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
     opacity: 0; transition: 1.5s; pointer-events: none;
 }
 
-.step-2 .galaxy-field { opacity: 1; pointer-events: auto; }
-
-
-
-/* --- 행성 노드 Z-Index (태양 뒤로 숨기기) --- */
+/* --- 행성 노드: Flexbox 대신 수학적 정중앙 고정 (화면 쏠림 방지) --- */
 .planet-node {
-    position: absolute; transform-origin: center; z-index: 10;
+    position: absolute; top: 50%; left: 50%;
+    width: var(--p-size); height: var(--p-size);
+    margin-top: calc(var(--p-size) / -2);
+    margin-left: calc(var(--p-size) / -2);
+    transform-origin: center; z-index: 10;
     animation: orbit var(--o-speed) linear infinite;
 }
 /* 태양을 가장 위로! */
 .planet-node:first-child { z-index: 100; }
 
 .planet-unit { 
-    width: var(--p-size); 
-    height: var(--p-size); position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; transform: rotate(calc(var(--o-speed) * -1deg)); }
-
-.planet-img { width: 100%; height: 100%; object-fit: contain;  animation: spin 40s linear infinite; }
-
+    width: 100%; height: 100%; position: relative; 
+    display: flex; flex-direction: column; align-items: center; cursor: pointer; 
+    transform: rotate(calc(var(--o-speed) * -1deg)); 
+}
+.planet-img { width: 100%; height: 100%; object-fit: contain; animation: spin 40s linear infinite; }
 .sun-main { filter: drop-shadow(0 0 50px rgba(255, 69, 0, 0.5)); }
 
-
-
+/* 팝업 UI 기본 스타일 (Hover 전에는 무조건 숨김) */
 .drink-popup {
-    position: absolute; 
-    bottom: 100%; 
-    width: 11vh;
-    margin-bottom: 7vh; /* 이름과 설명글이 들어갈 공간 확보 */
-    opacity: 0; 
-    transform: translateY(20px) scale(0.5);
-    transition: 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.27);
-    pointer-events: none;
-    z-index: 10;
+    position: absolute; bottom: 100%; width: 11vh; margin-bottom: 7vh; 
+    opacity: 0; transform: translateY(20px) scale(0.5);
+    transition: 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.27); pointer-events: none; z-index: 10;
 }
-
 .drink-name {
-    position: absolute; 
-    bottom: 100%; 
-    margin-bottom: 3.5vh; /* 설명글이 들어갈 공간 확보 */
-    color: #fff; 
-    font-size: 13px; 
-    font-weight: 700; 
-    letter-spacing: 1px;
-    opacity: 0; 
-    transform: translateY(20px); 
-    transition: 0.5s; 
-    white-space: nowrap; 
-    pointer-events: none; 
-    text-shadow: 0 0 10px rgba(0,0,0,0.5);
-    z-index: 10;
+    position: absolute; bottom: 100%; margin-bottom: 3.5vh; 
+    color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    opacity: 0; transform: translateY(20px); transition: 0.5s; white-space: nowrap; pointer-events: none; z-index: 10;
 }
-
 .drink-desc {
-    position: absolute; 
-    bottom: 100%; 
-    margin-bottom: 1vh; /* 행성과 텍스트 사이의 틈 */
-    color: #00704A; /* 스타벅스 시그니처 그린 포인트 */
-    font-size: 11px; 
-    font-weight: 300; 
-    letter-spacing: 0.5px;
-    opacity: 0; 
-    transform: translateY(20px); 
-    transition: 0.5s; 
-    white-space: nowrap; 
-    pointer-events: none; 
-    text-shadow: 0 0 5px rgba(0,0,0,0.8);
-    z-index: 10;
+    position: absolute; bottom: 100%; margin-bottom: 1vh; 
+    color: #00704A; font-size: 11px; font-weight: 300; letter-spacing: 0.5px;
+    opacity: 0; transform: translateY(20px); transition: 0.5s; white-space: nowrap; pointer-events: none; z-index: 10;
 }
 
+* Hover 활성화 */
 .planet-unit:hover .drink-popup { opacity: 1; transform: translateY(-2vh) scale(1.1); }
 .planet-unit:hover .drink-name { opacity: 1; transform: translateY(-2vh); }
 .planet-unit:hover .drink-desc { opacity: 1; transform: translateY(-2vh); }
 .planet-unit:hover .planet-img { transform: scale(1.1); filter: brightness(1.2); }
-
 
 
 .earth-system { position: relative; width: 100%; height: 100%; }
@@ -283,6 +248,7 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 .moon-img { width: 30%; height: 30%; position: absolute; top: 0; right: 0; }
 
 
+/* --- 궤도선 및 스크롤 UI 디자인 --- */
 .orbit-lines {
     position: absolute; top: 50%; left: 50%; width: 0; height: 0; z-index: 1;
 }
@@ -308,6 +274,13 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 .scroll-indicator p { font-size: 10px; color: #00704A; letter-spacing: 3px; font-weight: 700; }
 @keyframes scrollBounce { 0% { transform: translate(-50%, 0); opacity: 1; } 100% { transform: translate(-50%, 10px); opacity: 0; } }
 
+/* --- 행성 노드 Z-Index (태양 뒤로 숨기기) --- */
+.planet-node {
+    position: absolute; transform-origin: center; z-index: 10;
+    animation: orbit var(--o-speed) linear infinite;
+}
+/* 태양을 가장 위로! */
+.planet-node:first-child { z-index: 100; }
 @keyframes orbit {
 
     from { transform: rotate(0deg) translateX(var(--o-dist)) rotate(0deg); }
