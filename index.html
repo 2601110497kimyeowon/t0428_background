@@ -46,140 +46,234 @@
         </div>
 
         <div class="galaxy-field" id="galaxy-field">
-    <div class="planet-node" style="--o-dist: 0vw; --o-speed: 0s; --p-size: 20vh;">
-        <div class="planet-unit">
-            <img src="./images/drink_sun.png" class="drink-popup">
-            <div class="drink-name">Solar Flare Refresh</div>
-            <div class="drink-desc">태양의 뜨거운 에너지를 담은 상큼한 리프레셔</div>
-            <img src="./images/sun.png" class="planet-img">
+            <div class="orbit-lines">
+                <div class="orbit-line" style="--o-dist: 12vw;"></div>
+                <div class="orbit-line" style="--o-dist: 17vw;"></div>
+                <div class="orbit-line" style="--o-dist: 23vw;"></div>
+                <div class="orbit-line" style="--o-dist: 29vw;"></div>
+                <div class="orbit-line" style="--o-dist: 36vw;"></div>
+                <div class="orbit-line" style="--o-dist: 43vw;"></div>
+                <div class="orbit-line" style="--o-dist: 49vw;"></div>
+                <div class="orbit-line" style="--o-dist: 55vw;"></div>
+            </div>
+
+            <div class="planet-node" data-dist="0vw" style="--o-dist: 0vw; --o-speed: 0s; --p-size: 20vh;">
+                <div class="planet-unit">
+                    <img src="./images/drink_sun.png" class="drink-popup">
+                    <div class="drink-name">Solar Flare Refresh</div>
+                    <div class="drink-desc">태양의 뜨거운 에너지를 담은 상큼한 리프레셔</div>
+                    <img src="./images/sun.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="12vw" style="--o-dist: 12vw; --o-speed: 6s; --p-size: 4vh;">
+                <div class="planet-unit">
+                    <img src="./images/drink_mercury.png" class="drink-popup">
+                    <div class="drink-name">MERCURY ESPRESSO</div>
+                    <div class="drink-desc">수성의 궤도처럼 빠르고 강렬한 에스프레소</div>
+                    <img src="./images/planet_mercury.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="17vw" style="--o-dist: 17vw; --o-speed: 10s; --p-size: 6vh;">
+                <div class="planet-unit">
+                    <img src="./images/금성음료.png" class="drink-popup">
+                    <div class="drink-name">VENUS VELVET LATTE</div>
+                    <div class="drink-desc">금성의 아름다움을 닮은 부드러운 벨벳 라떼</div>
+                    <img src="./images/planet_venus.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="23vw" style="--o-dist: 23vw; --o-speed: 14s; --p-size: 7vh;">
+                <div class="planet-unit">
+                    <img src="./images/drink_earth.png" class="drink-popup">
+                    <div class="drink-name">TERRA COLD BREW</div>
+                    <div class="drink-desc">푸른 지구의 청량함을 담은 테라 콜드 브루</div>
+                    <img src="./images/planet_earth.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="29vw" style="--o-dist: 29vw; --o-speed: 18s; --p-size: 5.5vh;">
+                <div class="planet-unit">
+                    <img src="./images/drink_mars.png" class="drink-popup">
+                    <div class="drink-name">MARS BERRY CRUSH</div>
+                    <div class="drink-desc">화성의 붉은 모래를 연상시키는 베리 크러쉬</div>
+                    <img src="./images/planet_mars.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="36vw" style="--o-dist: 36vw; --o-speed: 25s; --p-size: 12vh;">
+                <div class="planet-unit">
+                    <img src="./images/drink_jupiter.png" class="drink-popup">
+                    <div class="drink-name">JUPITER GOLDEN CREAM</div>
+                    <div class="drink-desc">목성의 거대한 오라를 담은 달콤한 골든 크림</div>
+                    <img src="./images/planet_jupiter.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="43vw" style="--o-dist: 43vw; --o-speed: 32s; --p-size: 10vh;">
+                <div class="planet-unit">
+                    <img src="./images/토성음료.png" class="drink-popup">
+                    <div class="drink-name">SATURN RING TEA</div>
+                    <div class="drink-desc">토성의 신비로운 고리를 닮은 은은한 링 티</div>
+                    <img src="./images/planet_saturn.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="49vw" style="--o-dist: 49vw; --o-speed: 40s; --p-size: 8vh;">
+                <div class="planet-unit">
+                    <img src="./images/drink_urano.png" class="drink-popup">
+                    <div class="drink-name">URANUS MINT CHILLER</div>
+                    <div class="drink-desc">천왕성의 얼음 빙하를 담은 상쾌한 민트 칠러</div>
+                    <img src="./images/planet_urano.png" class="planet-img">
+                </div>
+            </div>
+            
+            <div class="planet-node" data-dist="55vw" style="--o-dist: 55vw; --o-speed: 50s; --p-size: 8vh;">
+                <div class="planet-unit">
+                    <img src="./images/drink_neptune.png" class="drink-popup">
+                    <div class="drink-name">NEPTUNE DEEP BLUE</div>
+                    <div class="drink-desc">해왕성의 깊고 푸른 바다를 담은 딥 블루</div>
+                    <img src="./images/planet_neptune.png" class="planet-img">
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 12vw; --o-speed: 6s; --p-size: 4vh;">
-        <div class="planet-unit">
-            <img src="./images/drink_mercury.png" class="drink-popup">
-            <div class="drink-name">MERCURY ESPRESSO</div>
-            <div class="drink-desc">수성의 궤도처럼 빠르고 강렬한 에스프레소</div>
-            <img src="./images/planet_mercury.png" class="planet-img">
+
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>SCROLL DOWN</p>
         </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 17vw; --o-speed: 10s; --p-size: 6vh;">
-        <div class="planet-unit">
-            <img src="./images/금성음료.png" class="drink-popup">
-            <div class="drink-name">VENUS VELVET LATTE</div>
-            <div class="drink-desc">금성의 아름다움을 닮은 부드러운 벨벳 라떼</div>
-            <img src="./images/planet_venus.png" class="planet-img">
-        </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 23vw; --o-speed: 14s; --p-size: 7vh;">
-        <div class="planet-unit">
-            <img src="./images/drink_earth.png" class="drink-popup">
-            <div class="drink-name">TERRA COLD BREW</div>
-            <div class="drink-desc">푸른 지구의 청량함을 담은 테라 콜드 브루</div>
-            <img src="./images/planet_earth.png" class="planet-img">
-        </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 29vw; --o-speed: 18s; --p-size: 5.5vh;">
-        <div class="planet-unit">
-            <img src="./images/drink_mars.png" class="drink-popup">
-            <div class="drink-name">MARS BERRY CRUSH</div>
-            <div class="drink-desc">화성의 붉은 모래를 연상시키는 베리 크러쉬</div>
-            <img src="./images/planet_mars.png" class="planet-img">
-        </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 36vw; --o-speed: 25s; --p-size: 12vh;">
-        <div class="planet-unit">
-            <img src="./images/drink_jupiter.png" class="drink-popup">
-            <div class="drink-name">JUPITER GOLDEN CREAM</div>
-            <div class="drink-desc">목성의 거대한 오라를 담은 달콤한 골든 크림</div>
-            <img src="./images/planet_jupiter.png" class="planet-img">
-        </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 43vw; --o-speed: 32s; --p-size: 10vh;">
-        <div class="planet-unit">
-            <img src="./images/토성음료.png" class="drink-popup">
-            <div class="drink-name">SATURN RING TEA</div>
-            <div class="drink-desc">토성의 신비로운 고리를 닮은 은은한 링 티</div>
-            <img src="./images/planet_saturn.png" class="planet-img">
-        </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 49vw; --o-speed: 40s; --p-size: 8vh;">
-        <div class="planet-unit">
-            <img src="./images/drink_urano.png" class="drink-popup">
-            <div class="drink-name">URANUS MINT CHILLER</div>
-            <div class="drink-desc">천왕성의 얼음 빙하를 담은 상쾌한 민트 칠러</div>
-            <img src="./images/planet_urano.png" class="planet-img">
-        </div>
-    </div>
-    
-    <div class="planet-node" style="--o-dist: 55vw; --o-speed: 50s; --p-size: 8vh;">
-        <div class="planet-unit">
-            <img src="./images/drink_neptune.png" class="drink-popup">
-            <div class="drink-name">NEPTUNE DEEP BLUE</div>
-            <div class="drink-desc">해왕성의 깊고 푸른 바다를 담은 딥 블루</div>
-            <img src="./images/planet_neptune.png" class="planet-img">
-        </div>
-    </div>
-</div>
     </main>
 
     <script>
     const body = document.body;
     const rocket = document.getElementById('rocket-trigger');
-    
-    // 로켓 클릭 시 GSAP 타임라인 애니메이션 실행
+    let currentStep = 1;      // 현재 화면 상태
+    let isAnimating = true;   // 애니메이션 중복 실행 방지 락(Lock)
+
+    // 1. [최초 진입] 텍스트 한 덩어리씩 촥촥 등장 (윈도우 로드 시 실행)
+    window.onload = () => {
+        const introTl = gsap.timeline({ onComplete: () => isAnimating = false });
+        introTl.from('.badge', { y: 30, opacity: 0, duration: 0.8, ease: "power2.out", delay: 0.2 })
+               .from('.main-title', { y: 30, opacity: 0, duration: 1, ease: "power2.out" }, "-=0.5")
+               .from('.guide-msg', { y: 30, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.6")
+               .from('.earth-rocket-group', { y: 150, opacity: 0, duration: 1.5, ease: "power3.out" }, "-=0.4");
+    };
+
+    // 2. [로켓 클릭] Step 1 -> Step 2 (태양계 궤도)
     rocket.addEventListener('click', () => {
-        if(body.classList.contains('step-1')) {
-            const tl = gsap.timeline();
-            
-            // 1. 로켓이 먼저 위로 발사됨
-            tl.to('.spacex-rocket', {
-                y: "-150vh", 
-                duration: 1.2,
-                ease: "power2.in"
-            }, 0) // 0: 타임라인 시작과 동시에 실행
-            
-            // 2. 타이틀과 지구가 뒤따라 위로 올라가며 페이드아웃
-            .to(['.hero-text-wrap', '.main-earth'], {
-                y: "-100vh",
-                opacity: 0,
-                duration: 1.5,
-                ease: "power3.inOut",
-                stagger: 0.1 // 텍스트가 먼저, 지구가 아주 살짝 나중에 올라가는 디테일
-            }, 0.5) // 로켓 출발 0.5초 뒤에 실행
-            
-            // 3. 화면이 다 비워지면 클래스 교체 (화면 전환)
-            .add(() => {
-                body.classList.remove('step-1');
-                body.classList.add('step-2');
-            })
-            
-            // 4. 태양계(Step 2) 요소들이 부드럽게 페이드인
-            .fromTo(['.special-ui', '.galaxy-field'], 
-                { opacity: 0 }, 
-                { opacity: 1, duration: 1.5, ease: "power2.out" }
-            );
+        if(currentStep !== 1 || isAnimating) return;
+        isAnimating = true;
+
+        const tl = gsap.timeline();
+        tl.to('.spacex-rocket', { y: "-150vh", duration: 1.2, ease: "power2.in" }, 0)
+          .to(['.hero-text-wrap', '.main-earth'], { y: "-100vh", opacity: 0, duration: 1.5, ease: "power3.inOut", stagger: 0.1 }, 0.5)
+          .add(() => {
+              body.classList.remove('step-1');
+              body.classList.add('step-2');
+          })
+          .fromTo(['.special-ui', '.galaxy-field'], { opacity: 0 }, { opacity: 1, duration: 1.5, ease: "power2.out" })
+          // ★ 3초 뒤 하단 스크롤 인디케이터 등장
+          .to('.scroll-indicator', { opacity: 1, duration: 1, ease: "power2.out" }, "+=3")
+          .add(() => { currentStep = 2; isAnimating = false; });
+    });
+
+    // 3. [스크롤 로직] 고품질 상태 머신
+    window.addEventListener('wheel', (e) => {
+        if (isAnimating || currentStep === 1) return;
+
+        if (e.deltaY > 0) {
+            // 아래로 스크롤
+            if (currentStep === 2) goToStep3();
+            else if (currentStep === 3) goToStep4();
+        } else if (e.deltaY < 0) {
+            // 위로 스크롤 (자연스러운 역방향 롤백 지원)
+            if (currentStep === 4) goToStep3_Reverse();
+            else if (currentStep === 3) goToStep2_Reverse();
         }
     });
+
+    // [Step 2 -> Step 3] 태양으로 흡수된 후 반시계방향 팝업
+    function goToStep3() {
+        isAnimating = true;
+        const tl = gsap.timeline({ onComplete: () => { currentStep = 3; isAnimating = false; }});
+        
+        tl.to('.scroll-indicator', { opacity: 0, duration: 0.5 }, 0); // 스크롤 UI 숨김
+        tl.to('.orbit-line', { opacity: 0, duration: 0.8 }, 0);       // 궤도선 페이드아웃
+
+        // 1) 나선형으로 태양(0vw)을 향해 빨려 들어감
+        tl.to('.planet-node:not(:first-child)', { 
+            '--o-dist': '0vw', duration: 1.5, ease: "power2.inOut" 
+        }, 0);
+        
+        // 2) 태양 뒤로 숨으며 크기 0으로 축소
+        tl.to('.planet-node:not(:first-child) .planet-unit', { 
+            scale: 0, opacity: 0, duration: 0.8, ease: "power2.in" 
+        }, 0.7);
+
+        // 3) 원형 레이아웃 클래스(step-3)로 교체
+        tl.add(() => {
+            body.classList.remove('step-2');
+            body.classList.add('step-3');
+        });
+
+        // 4) 반시계방향으로 음료들이 하나씩 튕겨져 나옴
+        tl.to('.planet-node:not(:first-child) .planet-unit', {
+            scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.5)",
+            stagger: { each: 0.1, from: "start" } // start부터 진행하면 시각적으로 반시계방향 전개됨
+        }, "+=0.2");
+    }
+
+    // [Step 3 -> Step 4] 일렬로 스윽 정렬
+    function goToStep4() {
+        isAnimating = true;
+        const tl = gsap.timeline({ onComplete: () => { currentStep = 4; isAnimating = false; }});
+        
+        tl.to('.galaxy-field', { opacity: 0, duration: 0.5 }); // 부드러운 전환을 위해 화면 암전
+        tl.add(() => {
+            body.classList.remove('step-3');
+            body.classList.add('step-4'); // 일렬 배치 레이아웃 활성화
+        });
+        tl.to('.galaxy-field', { opacity: 1, duration: 0.5 });
+        // 아래에서 위로 하나씩 스르륵 등장
+        tl.fromTo('.step-4 .planet-node',
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.08, duration: 0.8, ease: "power2.out" }
+        );
+    }
+
+    // [역방향] Step 4 -> Step 3
+    function goToStep3_Reverse() {
+        isAnimating = true;
+        const tl = gsap.timeline({ onComplete: () => { currentStep = 3; isAnimating = false; }});
+        tl.to('.galaxy-field', { opacity: 0, duration: 0.5 });
+        tl.add(() => { body.classList.remove('step-4'); body.classList.add('step-3'); });
+        tl.to('.galaxy-field', { opacity: 1, duration: 0.8 });
+    }
+
+    // [역방향] Step 3 -> Step 2
+    function goToStep2_Reverse() {
+        isAnimating = true;
+        const tl = gsap.timeline({ onComplete: () => { currentStep = 2; isAnimating = false; }});
+        
+        tl.to('.planet-node:not(:first-child) .planet-unit', { scale: 0, opacity: 0, duration: 0.8, ease: "power2.in" });
+        tl.add(() => {
+            body.classList.remove('step-3');
+            body.classList.add('step-2');
+            // 원래 궤도 거리(data-dist)로 복구
+            document.querySelectorAll('.planet-node').forEach(node => {
+                node.style.setProperty('--o-dist', node.getAttribute('data-dist'));
+            });
+        });
+        tl.to('.orbit-line', { opacity: 1, duration: 1 }, "+=0.2");
+        tl.to('.planet-node:not(:first-child) .planet-unit', { scale: 1, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.5");
+        tl.to('.scroll-indicator', { opacity: 1, duration: 0.5 });
+    }
 
     // 마우스 커서 팔로워 효과
     document.addEventListener('mousemove', (e) => {
         const cursor = document.querySelector('.cursor-follower');
-        cursor.style.left = e.clientX + 'px'; 
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // 마우스 휠 스크롤 시 Step 3로 전환
-    window.addEventListener('wheel', (e) => { 
-        if (e.deltaY > 0 && body.classList.contains('step-2')) {
-            body.classList.add('step-3'); 
-        }
+        cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
     });
 </script>
 </body>
