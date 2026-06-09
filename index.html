@@ -228,28 +228,8 @@
         });
     }
 
-    // [Step 3] 스크롤 할 때마다 반시계 방향으로 음료 1개씩 튀어나오기
-    function revealNextDrink() {
-        isAnimating = true;
-        step3Progress++;
-        // nth-child는 1부터 시작하고, 1번은 태양이므로 +1 해줌
-        const targetNode = document.querySelector(`.planet-node:nth-child(${step3Progress + 1})`); 
-        
-        const tl = gsap.timeline({ onComplete: () => isAnimating = false });
-        tl.to(targetNode, { '--o-dist': '26vw', duration: 0.8, ease: "back.out(1.2)" }, 0);
-        tl.to(targetNode.querySelectorAll('.drink-popup'), { opacity: 1, y: "-2vh", scale: 1.1, duration: 0.6, ease: "back.out(1.5)" }, 0.1);
-        tl.to(targetNode.querySelectorAll('.drink-name, .drink-desc'), { opacity: 1, y: "-2vh", scale: 1, duration: 0.6, ease: "power2.out" }, 0.2);
-    }
-
-    // [Step 3 롤백] 스크롤 올리면 하나씩 다시 들어가기
-    function hideCurrentDrink() {
-        isAnimating = true;
-        const targetNode = document.querySelector(`.planet-node:nth-child(${step3Progress + 1})`);
-        
-        const tl = gsap.timeline({ onComplete: () => { step3Progress--; isAnimating = false; }});
-        tl.to(targetNode.querySelectorAll('.drink-popup, .drink-name, .drink-desc'), { opacity: 0, y: 20, scale: 0.5, duration: 0.4 }, 0);
-        tl.to(targetNode, { '--o-dist': '0vw', duration: 0.6, ease: "power2.in" }, 0.2);
-    }
+    
+    
 
     // [Step 3 -> Step 4] 8개 다 나오고 스크롤 시 일렬 배치
     function goToStep4() {

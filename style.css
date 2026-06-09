@@ -1,55 +1,29 @@
-*  Global & Cursor */
-
+/* Global & Cursor */
 * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-
 body { background-color: #010204; color: #fff; font-family: 'Noto Sans KR', sans-serif; overflow: hidden; }
 
-
-
 .space-background {
-
     position: fixed; width: 100%; height: 100%;
-
     background: url('./images/우주배경.png') center/cover;
-
     z-index: -1; filter: brightness(0.3);
-
 }
-
-
 
 .cursor-follower {
-
     width: 15px; height: 15px; background: #00704A; border-radius: 50%;
-
     position: fixed; pointer-events: none; z-index: 9999;
-
     box-shadow: 0 0 20px rgba(0, 112, 74, 1); transform: translate(-50%, -50%);
-
 }
 
-
-
 header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index: 2000; }
-
 .container { width: 90%; max-width: 1600px; margin: 0 auto; }
-
 .flex-header { display: flex; justify-content: space-between; align-items: center; }
-
 .logo img { width: 50px; }
-
 .nav-menu { display: flex; list-style: none; }
-
 .nav-menu li { margin-left: 30px; }
-
 .nav-menu a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 700; opacity: 0.8; transition: 0.3s; }
-
 .nav-menu a:hover { opacity: 1; color: #00704A; }
 
-
-
 /* 2. STEP 1: Launch Zone */
-
 /* --- 화면 쏠림 방지 및 중앙 정렬 고정 --- */
 .launch-zone {
     position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -58,109 +32,47 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 }
 
 .hero-text-wrap { text-align: center; margin-bottom: 40vh; }
-
 .main-title { 
-
     font-family: 'Montserrat'; font-weight: 900; 
-
     font-size: 9vh; line-height: 1.0; letter-spacing: -3px;
-
     background: linear-gradient(to bottom, #eaeaea 0%, #a2a2a2 80%);
-
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-
 }
-
-
 
 /* 스타벅스 텍스트만 초록색 포인트 */
-
 .sb-green {
-
     -webkit-text-fill-color: #00704A;
-
     background: none;
-
     text-shadow: 0 0 10px rgba(0, 112, 74, 0.6);
-
 }
-
 .badge { color: #00704A; border: 1.5px solid #00704A; padding: 6px 20px; font-size: 11px; margin-bottom: 15px; display: inline-block; }
-
 .guide-msg { font-size: 12px; letter-spacing: 4px; color: #00704A; margin-top: 15px; animation: blink 1.5s infinite; }
 
-
-
 .earth-rocket-group { 
-
     position: absolute; 
-
     bottom: -80vh;
-
     width: 100%; 
-
     display: flex; 
-
     justify-content: center; 
-
     cursor: pointer;
-
     z-index: 2; /* 컨테이너 자체의 z-index */
-
 }
-
 .main-earth { 
-
     width: 120vh; 
-
     z-index: 1; /* 지구를 로켓보다 뒤에 배치 */
-
 }
-
 .rocket-box { 
-
     position: absolute; 
-
     bottom: 100vh;
-
     width: 8vh;
-
     z-index: 1; /* 로켓을 지구보다 앞에 배치 */
-
     transition: 2s;
-
 }
-
 .spacex-rocket { width: 100%; height: auto; }
 
+.step-2 .launch-zone, .step-3 .launch-zone, .step-4 .launch-zone { display: none; }
 
-
-
-.step-2 .launch-zone { display: none; }
-/* --- STEP 3: 원형 방사형 배치 (12시부터 반시계방향) --- */
-.step-3 .planet-node { animation: none !important; }
-.step-3 .planet-node:nth-child(2) { transform: rotate(-90deg); }   /* 12시 수성 */
-.step-3 .planet-node:nth-child(3) { transform: rotate(-135deg); }  /* 10시 반 금성 */
-.step-3 .planet-node:nth-child(4) { transform: rotate(-180deg); }  /* 9시 지구 */
-.step-3 .planet-node:nth-child(5) { transform: rotate(-225deg); }  /* 7시 반 화성 */
-.step-3 .planet-node:nth-child(6) { transform: rotate(-270deg); }  /* 6시 목성 */
-.step-3 .planet-node:nth-child(7) { transform: rotate(-315deg); }  /* 4시 반 토성 */
-.step-3 .planet-node:nth-child(8) { transform: rotate(0deg); }     /* 3시 천왕성 */
-.step-3 .planet-node:nth-child(9) { transform: rotate(-45deg); }   /* 1시 반 해왕성 */
-
-/* 이미지 뒤집힘 방지 역회전 */
-.step-3 .planet-node:nth-child(2) .planet-unit { transform: rotate(90deg); }
-.step-3 .planet-node:nth-child(3) .planet-unit { transform: rotate(135deg); }
-.step-3 .planet-node:nth-child(4) .planet-unit { transform: rotate(180deg); }
-.step-3 .planet-node:nth-child(5) .planet-unit { transform: rotate(225deg); }
-.step-3 .planet-node:nth-child(6) .planet-unit { transform: rotate(270deg); }
-.step-3 .planet-node:nth-child(7) .planet-unit { transform: rotate(315deg); }
-.step-3 .planet-node:nth-child(8) .planet-unit { transform: rotate(0deg); }
-.step-3 .planet-node:nth-child(9) .planet-unit { transform: rotate(45deg); }
-
-/* Step 3 태양(중심) 디자인 강화 */
-.step-3 .planet-node:first-child .planet-img { filter: brightness(0.6) contrast(1.2); transform: scale(1.3); transition: 1s; }
-* --- STEP 4: 일렬 배치 --- */
+/* --- STEP 4: 일렬 배치 --- */
 .step-4 .galaxy-field {
     display: flex; flex-direction: row; justify-content: center; align-items: center;
     gap: 3.5vw; opacity: 1; pointer-events: auto; position: absolute; top: 0; left: 0;
@@ -169,26 +81,19 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 .step-4 .planet-node { position: relative; animation: none !important; transform: none !important; --o-dist: 0vw !important; }
 .step-4 .planet-unit { transform: none !important; width: 10vh !important; height: 10vh !important; }
 .step-4 .planet-node:first-child .planet-unit { width: 15vh !important; height: 15vh !important; }
+
 /* 3. STEP 2: Special UI */
-
 .special-ui { position: absolute; top: 15%; left: 8%; opacity: 0; transition: 1s; z-index: 50; }
-
 .step-2 .special-ui { opacity: 1; }
-
 .edition-label { font-size: 12px; letter-spacing: 5px; color: #00704A; font-weight: 700; }
-
 .edition-title { font-family: 'Montserrat'; font-weight: 900; font-size: 3vh; margin-top: 5px; }
-
 .line { display: block; width: 40px; height: 2px; background: #00704A; margin-top: 15px; }
 
-
-
 /* 4. Galaxy Field */
-
 .galaxy-field {
     position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
     display: flex; justify-content: center; align-items: center;
-    opacity: 0; transition: 1.5s; pointer-events: none;
+    opacity: 0; transition: 1.5s; pointer-events: none; overflow: hidden;
 }
 
 /* --- 행성 노드: Flexbox 대신 수학적 정중앙 고정 (화면 쏠림 방지) --- */
@@ -207,8 +112,9 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
     width: 100%; height: 100%; position: relative; 
     display: flex; flex-direction: column; align-items: center; cursor: pointer; 
     transform: rotate(calc(var(--o-speed) * -1deg)); 
+    transition: 0.5s;
 }
-.planet-img { width: 100%; height: 100%; object-fit: contain; animation: spin 40s linear infinite; }
+.planet-img { width: 100%; height: 100%; object-fit: contain; animation: spin 40s linear infinite; transition: 0.5s; }
 .sun-main { filter: drop-shadow(0 0 50px rgba(255, 69, 0, 0.5)); }
 
 /* 팝업 UI 기본 스타일 (Hover 전에는 무조건 숨김) */
@@ -228,25 +134,27 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
     opacity: 0; transform: translateY(20px); transition: 0.5s; white-space: nowrap; pointer-events: none; z-index: 10;
 }
 
-* Hover 활성화 */
-.planet-unit:hover .drink-popup { opacity: 1; transform: translateY(-2vh) scale(1.1); }
-.planet-unit:hover .drink-name { opacity: 1; transform: translateY(-2vh); }
-.planet-unit:hover .drink-desc { opacity: 1; transform: translateY(-2vh); }
-.planet-unit:hover .planet-img { transform: scale(1.1); filter: brightness(1.2); }
+/* --- Hover 활성화 (각 스텝별로 분리) --- */
 
+/* STEP 2: 궤도 돌 때 커서 대면 [음료 + 이름]만 뜸 */
+.step-2 .planet-unit:hover .drink-popup { opacity: 1; transform: translateY(-2vh) scale(1.1); }
+.step-2 .planet-unit:hover .drink-name { opacity: 1; transform: translateY(-2vh); }
+.step-2 .planet-unit:hover .planet-img { transform: scale(1.1); filter: brightness(1.2); }
+
+/* STEP 4: 태양계 일렬로 뜰 때 커서 대면 [음료 + 이름 + 설명글] 모두 뜸 */
+.step-4 .planet-unit:hover .drink-popup { opacity: 1; transform: translateY(-4vh) scale(1.2); z-index: 200; }
+.step-4 .planet-unit:hover .drink-name { opacity: 1; transform: translateY(-1vh); margin-bottom: 2.5vh; z-index: 200; }
+.step-4 .planet-unit:hover .drink-desc { opacity: 1; transform: translateY(-1vh); margin-bottom: -1vh; z-index: 200; }
+.step-4 .planet-unit:hover .planet-img { filter: brightness(0.6); transform: scale(0.9); }
+
+/* -------------------------------------- */
 
 .earth-system { position: relative; width: 100%; height: 100%; }
-
 .moon-wrap { 
-
     position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; 
-
     margin-top: -100%; margin-left: -100%; animation: rotateEarth 4s linear infinite; 
-
 }
-
 .moon-img { width: 30%; height: 30%; position: absolute; top: 0; right: 0; }
-
 
 /* --- 궤도선 및 스크롤 UI 디자인 --- */
 .orbit-lines {
@@ -282,15 +190,10 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 /* 태양을 가장 위로! */
 .planet-node:first-child { z-index: 100; }
 @keyframes orbit {
-
     from { transform: rotate(0deg) translateX(var(--o-dist)) rotate(0deg); }
-
     to { transform: rotate(360deg) translateX(var(--o-dist)) rotate(-360deg); }
-
 }
-
 @keyframes rotateEarth { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes rocketUp { to { transform: translateX(0) translateY(-150vh); } }
-
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
