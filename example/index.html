@@ -1,76 +1,177 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>STARBUCKS x SpaceX: COSMIC EDITION</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>STARBUCKS x SpaceX: COSMIC EDITION</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&family=Noto+Sans+KR:wght@100;300;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="step-1">
-    <div class="cursor-follower"></div>
-    <div class="space-background"></div>
-    
-    <header>
-        <div class="container flex-header">
-            <h1 class="logo"><img src="./images/logo.png" alt="Starbucks"></h1>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#">MISSION</a></li><li><a href="#">PLANETS</a></li><li><a href="#">STARLINK</a></li><li><a href="#">RESERVE</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<div class="cursor-follower"></div>
+<div class="space-background"></div>
+<header>
+<div class="container flex-header">
+<h1 class="logo"><img src="./images/logo.png" alt="Starbucks"></h1>
+<nav><ul class="nav-menu"><li><a href="#">MISSION</a></li><li><a href="#">PLANETS</a></li><li><a href="#">STARLINK</a></li><li><a href="#">RESERVE</a></li></ul></nav>
+</div>
+</header>
 
-    <main id="main-canvas">
-        <div class="launch-zone">
-            <div class="hero-text-wrap">
-                <span class="badge">STARBUCKS x SpaceX</span>
-                <h2 class="main-title">
-                    WELCOME TO THE GALAXY<br>
-                    BEYOND THE <span class="sb-green">STARBUCKS</span>
-                </h2>
-                <p class="guide-msg">TAP THE ROCKET TO START JOURNEY</p>
-            </div>
-            <div class="earth-rocket-group" id="rocket-trigger">
-                <div class="rocket-box"><img src="./images/spaceX rocket.png" alt="Rocket" class="spacex-rocket"></div>
-                <img src="./images/planet_earth.png" alt="Earth" class="main-earth">
-            </div>
-        </div>
+<main id="main-canvas">
+<div class="launch-zone" id="launch-zone">
+<div class="hero-text-wrap">
+<span class="badge">STARBUCKS x SpaceX</span>
+<h2 class="main-title">WELCOME TO THE GALAXY<br>BEYOND THE <span class="sb-green">STARBUCKS</span></h2>
+<p class="guide-msg">TAP THE ROCKET TO START JOURNEY</p>
+</div>
+<div class="earth-rocket-group" id="rocket-trigger">
+<div class="rocket-box"><img src="./images/spaceX rocket.png" alt="Rocket" class="spacex-rocket"></div>
+<img src="./images/planet_earth.png" alt="Earth" class="main-earth">
+</div>
+</div>
 
-        <div class="special-ui">
-            <div class="edition-label">SPECIAL EDITION</div>
-            <h3 class="edition-title">GALAXY DRINK ARCHIVE</h3>
-            <span class="line"></span>
-        </div>
+<div class="galaxy-field" id="galaxy-field">
+<div class="orbit-lines">
+<div class="orbit-line" style="--o-dist: 12vw;"></div><div class="orbit-line" style="--o-dist: 17vw;"></div>
+<div class="orbit-line" style="--o-dist: 23vw;"></div><div class="orbit-line" style="--o-dist: 29vw;"></div>
+<div class="orbit-line" style="--o-dist: 36vw;"></div><div class="orbit-line" style="--o-dist: 43vw;"></div>
+<div class="orbit-line" style="--o-dist: 49vw;"></div><div class="orbit-line" style="--o-dist: 55vw;"></div>
+</div>
 
-        <div class="galaxy-field" id="galaxy-field">
-            <div class="planet-node" style="--o-dist: 0vw; --o-speed: 0s; --p-size: 20vh;">
-                <div class="planet-unit"><img src="./images/drink_sun.png" class="drink-popup"><div class="drink-name">SOLAR ENERGY MIST</div><img src="./images/sun.png" class="planet-img"></div>
-            </div>
-            <div class="planet-node" style="--o-dist: 12vw; --o-speed: 6s; --p-size: 4vh;"><div class="planet-unit"><img src="./images/drink_mercury.png" class="drink-popup"><div class="drink-name">MERCURY ESPRESSO</div><img src="./images/planet_mercury.png" class="planet-img"></div></div>
-            <div class="planet-node" style="--o-dist: 17vw; --o-speed: 10s; --p-size: 6vh;"><div class="planet-unit"><img src="./images/금성음료.png" class="drink-popup"><div class="drink-name">VENUS VELVET LATTE</div><img src="./images/planet_venus.png" class="planet-img"></div></div>
-            <div class="planet-node" style="--o-dist: 23vw; --o-speed: 14s; --p-size: 7vh;"><div class="planet-unit"><img src="./images/drink_earth.png" class="drink-popup"><div class="drink-name">TERRA COLD BREW</div><img src="./images/planet_earth.png" class="planet-img"></div></div>
-            <div class="planet-node" style="--o-dist: 29vw; --o-speed: 18s; --p-size: 5.5vh;"><div class="planet-unit"><img src="./images/drink_mars.png" class="drink-popup"><div class="drink-name">MARS BERRY CRUSH</div><img src="./images/planet_mars.png" class="planet-img"></div></div>
-            <div class="planet-node" style="--o-dist: 36vw; --o-speed: 25s; --p-size: 12vh;"><div class="planet-unit"><img src="./images/drink_jupiter.png" class="drink-popup"><div class="drink-name">JUPITER GOLDEN CREAM</div><img src="./images/planet_jupiter.png" class="planet-img"></div></div>
-            <div class="planet-node" style="--o-dist: 43vw; --o-speed: 32s; --p-size: 10vh;"><div class="planet-unit"><img src="./images/토성음료.png" class="drink-popup"><div class="drink-name">SATURN RING TEA</div><img src="./images/planet_saturn.png" class="planet-img"></div></div>
-            <div class="planet-node" style="--o-dist: 49vw; --o-speed: 40s; --p-size: 8vh;"><div class="planet-unit"><img src="./images/drink_urano.png" class="drink-popup"><div class="drink-name">URANUS MINT CHILLER</div><img src="./images/planet_urano.png" class="planet-img"></div></div>
-            <div class="planet-node" style="--o-dist: 55vw; --o-speed: 50s; --p-size: 8vh;"><div class="planet-unit"><img src="./images/drink_neptune.png" class="drink-popup"><div class="drink-name">NEPTUNE DEEP BLUE</div><img src="./images/planet_neptune.png" class="planet-img"></div></div>
-        </div>
-    </main>
+<div class="planet-node sun-node" style="--o-dist: 0vw; --o-speed: 0s; --p-size: 15vh;">
+<div class="planet-unit">
+<img src="./images/drink_sun.png" class="drink-popup">
+<div class="drink-name">Solar Flare Refresher</div>
+<div class="drink-desc">태양의 강렬한 에너지를 담은 리프레셔</div>
+<img src="./images/sun.png" class="planet-img sun-main">
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 12vw; --o-speed: 6s; --p-size: 4vh;">
+<div class="planet-unit">
+<img src="./images/drink_mercury.png" class="drink-popup">
+<div class="drink-name">Mercury Espresso</div>
+<div class="drink-desc">강렬한 에스프레소의 정수를 담은 한 잔</div>
+<img src="./images/planet_mercury.png" class="planet-img">
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 17vw; --o-speed: 10s; --p-size: 6vh;">
+<div class="planet-unit">
+<img src="./images/금성음료.png" class="drink-popup">
+<div class="drink-name">Venus Velvet Latte</div>
+<div class="drink-desc">부드러운 벨벳 폼과 향긋한 바닐라의 조화</div>
+<img src="./images/planet_venus.png" class="planet-img">
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 23vw; --o-speed: 14s; --p-size: 7vh;">
+<div class="planet-unit">
+<img src="./images/drink_earth.png" class="drink-popup">
+<div class="drink-name">Terra Cold Brew</div>
+<div class="drink-desc">지구의 생명력을 닮은 청량한 콜드 브루</div>
+<div class="earth-system"><img src="./images/planet_earth.png" class="planet-img"><div class="moon-wrap"><img src="./images/planet_moon.png" class="moon-img"></div></div>
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 29vw; --o-speed: 18s; --p-size: 5vh;">
+<div class="planet-unit">
+<img src="./images/drink_mars.png" class="drink-popup">
+<div class="drink-name">Mars Berry Crush</div>
+<div class="drink-desc">붉은 대지의 에너지를 깨우는 베리 크러쉬</div>
+<img src="./images/planet_mars.png" class="planet-img">
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 36vw; --o-speed: 25s; --p-size: 12vh;">
+<div class="planet-unit">
+<img src="./images/drink_jupiter.png" class="drink-popup">
+<div class="drink-name">Jupiter Golden Cream Latte</div>
+<div class="drink-desc">거대한 풍요로움을 담은 골든 크림 라떼</div>
+<img src="./images/planet_jupiter.png" class="planet-img">
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 43vw; --o-speed: 32s; --p-size: 10vh;">
+<div class="planet-unit">
+<img src="./images/토성음료.png" class="drink-popup">
+<div class="drink-name">Saturn Ring Blend</div>
+<div class="drink-desc">고리의 우아함을 담은 깊고 진한 티 베이스</div>
+<img src="./images/planet_saturn.png" class="planet-img">
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 49vw; --o-speed: 40s; --p-size: 8vh;">
+<div class="planet-unit">
+<img src="./images/drink_urano.png" class="drink-popup">
+<div class="drink-name">Uranus Cool Mint</div>
+<div class="drink-desc">차갑고 신비로운 색감의 쿨 민트 칠러</div>
+<img src="./images/planet_urano.png" class="planet-img">
+</div>
+</div>
+<div class="planet-node" style="--o-dist: 55vw; --o-speed: 50s; --p-size: 8vh;">
+<div class="planet-unit">
+<img src="./images/drink_neptune.png" class="drink-popup">
+<div class="drink-name">Neptune Deep Blue Blend</div>
+<div class="drink-desc">심해의 신비를 담은 딥 블루 블렌디드</div>
+<img src="./images/planet_neptune.png" class="planet-img">
+</div>
+</div>
+</div>
 
-    <script>
-        const body = document.body;
-        const rocket = document.getElementById('rocket-trigger');
-        rocket.addEventListener('click', () => {
-            if(body.classList.contains('step-1')) {
-                rocket.classList.add('launch');
-                setTimeout(() => { body.classList.remove('step-1'); body.classList.add('step-2'); }, 1200); 
-            }
-        });
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor-follower');
-            cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-        });
-    </script>
+<div class="scroll-indicator">
+<div class="mouse"></div>
+<p>SCROLL TO EXPLORE</p>
+</div>
+</main>
+
+<script>
+const body = document.body;
+const launchZone = document.getElementById('launch-zone');
+const rocket = document.getElementById('rocket-trigger');
+let currentStep = 1;
+
+// 1. 첫 화면 GSAP 페이드인 순차 등장
+window.addEventListener('load', () => {
+const tl = gsap.timeline();
+tl.from(".main-title", { opacity: 0, y: 30, duration: 1 })
+.from(".guide-msg", { opacity: 0, y: 20, duration: 0.5 })
+.from(".spacex-rocket", { opacity: 0, y: 50, duration: 0.8 })
+.from(".main-earth", { opacity: 0, y: 50, duration: 1 }, "-=0.4");
+});
+
+// 커서 따라다니기
+document.addEventListener('mousemove', (e) => {
+const cursor = document.querySelector('.cursor-follower');
+cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
+});
+
+// 2. 로켓 클릭 이벤트 (발사 및 궤도 화면 전환)
+rocket.addEventListener('click', () => {
+if(currentStep === 1) {
+gsap.to(".spacex-rocket", { y: "-100vh", duration: 1.2, ease: "power2.in" });
+gsap.to(launchZone, { y: "-100vh", duration: 1.5, delay: 0.5, ease: "power2.inOut" });
+setTimeout(() => {
+body.classList.replace('step-1', 'step-2');
+currentStep = 2;
+gsap.to(".scroll-indicator", { opacity: 1, duration: 1, delay: 0.5 });
+}, 1500);
+}
+});
+
+// 3. 스크롤 이벤트 (방사형 -> 일렬 수평)
+window.addEventListener('wheel', (e) => {
+if (e.deltaY > 0) {
+if (currentStep === 2 && body.classList.contains('step-2')) {
+// Step 3: 태양 고정, 반시계 방사형 음료 등장
+body.classList.replace('step-2', 'step-3');
+currentStep = 3;
+const planets = gsap.utils.toArray(".planet-node:not(.sun-node)");
+gsap.fromTo(planets,
+{ opacity: 0, scale: 0 },
+{ opacity: 1, scale: 1, duration: 0.6, stagger: 0.15, ease: "back.out(1.5)" }
+);
+} else if (currentStep === 3 && body.classList.contains('step-3')) {
+// Step 4: 일렬 수평 배열
+body.classList.replace('step-3', 'step-4');
+currentStep = 4;
+gsap.to(".scroll-indicator", { opacity: 0, duration: 0.5 });
+}
+}
+});
+</script>
 </body>
 </html>
