@@ -72,16 +72,6 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 
 .step-2 .launch-zone, .step-3 .launch-zone, .step-4 .launch-zone { display: none; }
 
-/* --- STEP 4: 일렬 배치 --- */
-.step-4 .galaxy-field {
-    display: flex; flex-direction: row; justify-content: center; align-items: center;
-    gap: 3.5vw; opacity: 1; pointer-events: auto; position: absolute; top: 0; left: 0;
-}
-.step-4 .orbit-lines { display: none; }
-.step-4 .planet-node { position: relative; animation: none !important; transform: none !important; --o-dist: 0vw !important; }
-.step-4 .planet-unit { transform: none !important; width: 10vh !important; height: 10vh !important; }
-.step-4 .planet-node:first-child .planet-unit { width: 15vh !important; height: 15vh !important; }
-
 /* 3. STEP 2: Special UI */
 .special-ui { position: absolute; top: 15%; left: 8%; opacity: 0; transition: 1s; z-index: 50; }
 .step-2 .special-ui { opacity: 1; }
@@ -94,6 +84,11 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
     position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
     display: flex; justify-content: center; align-items: center;
     opacity: 0; transition: 1.5s; pointer-events: none; overflow: hidden;
+}
+
+/* ★ 핵심 수정: Step 2부터 마우스 호버(클릭)가 인식되도록 pointer-events 활성화 */
+.step-2 .galaxy-field, .step-3 .galaxy-field, .step-4 .galaxy-field {
+    opacity: 1; pointer-events: auto;
 }
 
 /* --- 행성 노드: Flexbox 대신 수학적 정중앙 고정 (화면 쏠림 방지) --- */
@@ -137,11 +132,13 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 /* --- Hover 활성화 (각 스텝별로 분리) --- */
 
 /* STEP 2: 궤도 돌 때 커서 대면 [음료 + 이름]만 뜸 */
-.step-2 .planet-unit:hover .drink-popup { opacity: 1; transform: translateY(-2vh) scale(1.1); }
-.step-2 .planet-unit:hover .drink-name { opacity: 1; transform: translateY(-2vh); }
+.step-2 .planet-node:hover { z-index: 200; } /* 궤도가 겹쳐도 호버한 행성이 최상단으로 오게끔 처리 */
+.step-2 .planet-unit:hover .drink-popup { opacity: 1; transform: translateY(-2vh) scale(1.1); z-index: 200; }
+.step-2 .planet-unit:hover .drink-name { opacity: 1; transform: translateY(-2vh); z-index: 200; }
 .step-2 .planet-unit:hover .planet-img { transform: scale(1.1); filter: brightness(1.2); }
 
 /* STEP 4: 태양계 일렬로 뜰 때 커서 대면 [음료 + 이름 + 설명글] 모두 뜸 */
+.step-4 .planet-node:hover { z-index: 200; }
 .step-4 .planet-unit:hover .drink-popup { opacity: 1; transform: translateY(-4vh) scale(1.2); z-index: 200; }
 .step-4 .planet-unit:hover .drink-name { opacity: 1; transform: translateY(-1vh); margin-bottom: 2.5vh; z-index: 200; }
 .step-4 .planet-unit:hover .drink-desc { opacity: 1; transform: translateY(-1vh); margin-bottom: -1vh; z-index: 200; }
@@ -182,13 +179,17 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 0; z-index
 .scroll-indicator p { font-size: 10px; color: #00704A; letter-spacing: 3px; font-weight: 700; }
 @keyframes scrollBounce { 0% { transform: translate(-50%, 0); opacity: 1; } 100% { transform: translate(-50%, 10px); opacity: 0; } }
 
-/* --- 행성 노드 Z-Index (태양 뒤로 숨기기) --- */
-.planet-node {
-    position: absolute; transform-origin: center; z-index: 10;
-    animation: orbit var(--o-speed) linear infinite;
+/* --- STEP 4: 일렬 배치 (기존 코드 유지) --- */
+.step-4 .galaxy-field {
+    display: flex; flex-direction: row; justify-content: center; align-items: center;
+    gap: 3.5vw; opacity: 1; pointer-events: auto; position: absolute; top: 0; left: 0;
 }
-/* 태양을 가장 위로! */
-.planet-node:first-child { z-index: 100; }
+.step-4 .orbit-lines { display: none; }
+.step-4 .planet-node { position: relative; animation: none !important; transform: none !important; --o-dist: 0vw !important; }
+.step-4 .planet-unit { transform: none !important; width: 10vh !important; height: 10vh !important; }
+.step-4 .planet-node:first-child .planet-unit { width: 15vh !important; height: 15vh !important; }
+
+/* 키프레임 */
 @keyframes orbit {
     from { transform: rotate(0deg) translateX(var(--o-dist)) rotate(0deg); }
     to { transform: rotate(360deg) translateX(var(--o-dist)) rotate(-360deg); }

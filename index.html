@@ -218,14 +218,6 @@
         tl.to('.planet-node:not(:first-child) .planet-img', { 
             scale: 0, opacity: 0, duration: 0.4 
         }, 0.8);
-
-        // 3) 원형 방향 세팅
-        tl.add(() => {
-            body.classList.remove('step-2');
-            body.classList.add('step-3');
-            // 음료 팝업들 초기 숨김 처리
-            gsap.set('.planet-node:not(:first-child) .drink-popup, .planet-node:not(:first-child) .drink-name, .planet-node:not(:first-child) .drink-desc', { opacity: 0, y: 20, scale: 0.5 });
-        });
     }
 
     
